@@ -6,6 +6,14 @@ module.exports = {
     'scss/double-slash-comment-whitespace-inside': 'always',
     'scss/no-global-function-names': null,
     'property-no-vendor-prefix': null,
+
+    'declaration-block-no-redundant-longhand-properties': [
+      true,
+      {
+        ignoreShorthands: ['inset'],
+      },
+    ],
+
     'order/order': [
       [
         'dollar-variables',
