@@ -481,7 +481,7 @@ const propertyGroups = [
 
 const propertiesOrder = propertyGroups.map((properties) => ({
   noEmptyLineBetween: true,
-  emptyLineBefore: 'threshold', // always or never
+  emptyLineBefore: 'threshold', // or 'always' or 'never'
   properties,
 }));
 
