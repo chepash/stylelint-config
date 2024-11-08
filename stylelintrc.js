@@ -414,7 +414,6 @@ const interaction = [
   'will-change',
   'cursor',
   'caption-side',
-  'content',
   'quotes',
   'counter-set',
   'counter-increment',
@@ -469,6 +468,7 @@ const interaction = [
 const propertyGroups = [
   ['composes'],
   ['all'],
+  ['content'],
   positioning,
   layout,
   boxModel,
