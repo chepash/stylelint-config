@@ -1,3 +1,4 @@
+//-- stylelint-config-clean-order reconfig --
 const positioning = [
   'isolation',
   'position',
@@ -109,6 +110,7 @@ const layout = [
   'shape-image-threshold',
   'shape-margin',
 ];
+
 const overflow = [
   'overflow',
   'overflow-x',
@@ -116,7 +118,8 @@ const overflow = [
   'overflow-block',
   'overflow-inline',
   'overflow-clip-margin',
-]; // at the end of the group appearance
+]; // moved from "layout" group to the end of the "appearance" group
+
 const boxModel = [
   'box-sizing',
   'aspect-ratio',
@@ -483,6 +486,8 @@ const propertiesOrder = propertyGroups.map((properties) => ({
   emptyLineBefore: 'threshold', // or 'always' or 'never'
   properties,
 }));
+
+//-- end of stylelint-config-clean-order reconfig --
 
 module.exports = {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-clean-order'],
