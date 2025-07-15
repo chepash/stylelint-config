@@ -510,12 +510,12 @@ module.exports = {
     //-- end of plugin rules --
 
     //-- scss rules --
-    'scss/at-function-pattern': null, // allow camelcase function names
+    'scss/at-function-pattern': null, // allow snake_case function names e.g. "@function random_range($min, $max)"
     'scss/dollar-variable-pattern': null, // allow camelCase "$playersChatClass" and kebab-case with double dash "$option-color" "$option-bg--selected"
     'scss/no-global-function-names': null, // allow global function names e.g. map-get($setting, 'bg')
     'scss/at-extend-no-missing-placeholder': null, // allow duplicate code from other classes e.g. "@extend .Button--button-special"
-    'scss/dollar-variable-empty-line-before': null, // scss vars after $name will be not grouped
-    'scss/double-slash-comment-whitespace-inside': null, //--example--// without space at the start of the comment
+    'scss/dollar-variable-empty-line-before': null, // scss vars after main name of class "$name" will be not grouped
+    'scss/double-slash-comment-whitespace-inside': null, //_space at the start of the comment not always needed
     'scss/double-slash-comment-empty-line-before': null, // no need empty line before every comment
 
     'scss/operator-no-newline-before': true, //
