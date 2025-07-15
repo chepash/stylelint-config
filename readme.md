@@ -1,4 +1,4 @@
-Установленные библиотеки:
+## Установленные библиотеки:
 
 ```
 node 18.15.0
@@ -13,9 +13,10 @@ npm 8.19.3
 Кастомизировал конфиг библиотеки **stylelint-config-clean-order**,
 вытащил все группы стилей из библиотеки и переделал.
 Установил свой порядок для этих групп. Хотя четсно оставил бы дефолтный порятдок стилей как изначально в конфиге.
+
 Да я теперь могу гибко настроись какой css свойство идёт после какого. Но это сложнее поддерживать. Хотелось бы просто периодически обновлять **stylelint-config-clean-order** до последней версии.
 
-Чтобы быстро протестировать настроенный **StyleLint** на своём проекте:
+### Чтобы быстро протестировать настроенный **StyleLint** на своём проекте:
 
 1. установить глобально несколько библиотек
 
@@ -43,3 +44,44 @@ npm uninstall -g \
    stylelint-config-clean-order \
    stylelint-declaration-block-no-ignored-properties
 ```
+
+### Можно не глобально весь проект прогонять через линтер, а просто форматировать в тех компонентах в которых работаете:
+
+1. В IDE установить плагин Stylelint
+
+2. В настройках плагина в IDE указать путь к глобальному конфигу со всеми плагинами на вашей машине
+
+```
+Stylelint: Config File
+
+/Users/_user_/.nvm/versions/node/v18.15.0/lib/node_modules
+```
+
+3. В настройках плагина в IDE указать путь к кастомному конфигу
+
+```
+Stylelint: Config File
+
+/Users/_user_/Downloads/stylelintrc.js
+```
+
+4. Можно добавить автоматическое исправление в файле при сохранении. Пример добавления настроек для VS Code
+
+```js
+  "stylelint.validate": ["css", "less", "postcss", "scss"],
+
+  "[scss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+```
+
+как видно у меня та еще **Prettier** установлен
