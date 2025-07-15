@@ -490,14 +490,29 @@ module.exports = {
   rules: {
     'selector-class-pattern': null,
     'scss/dollar-variable-pattern': null,
-    'scss/double-slash-comment-whitespace-inside': 'always',
+    'scss/double-slash-comment-whitespace-inside': null,
     'scss/no-global-function-names': null,
     'property-no-vendor-prefix': null,
+    'scss/dollar-variable-empty-line-before': null, // scss vars after $name will be not grouped
+    'scss/double-slash-comment-empty-line-before': null,
+    'color-function-notation': 'legacy', // not use new rgb color notation rgb(25 26 30 / 90%)
+    'alpha-value-notation': 'number', // 0.5 instead of 90%
+
+    'function-name-case': null,
+    'keyframes-name-pattern': null,
+
+    'length-zero-no-unit': [
+      true,
+      {
+        ignore: ['custom-properties'],
+        ignoreFunctions: ['columnWidth'],
+      },
+    ],
 
     'declaration-block-no-redundant-longhand-properties': [
       true,
       {
-        ignoreShorthands: ['inset'],
+        ignoreShorthands: ['flex-flow'],
       },
     ],
 
@@ -506,7 +521,7 @@ module.exports = {
       {
         severity: 'warning',
         unspecified: 'bottomAlphabetical',
-        emptyLineMinimumPropertyThreshold: 5,
+        emptyLineMinimumPropertyThreshold: 7,
       },
     ],
 
