@@ -413,7 +413,6 @@ const interaction = [
   'will-change',
   'cursor',
   'caption-side',
-  'content',
   'quotes',
   'counter-set',
   'counter-increment',
