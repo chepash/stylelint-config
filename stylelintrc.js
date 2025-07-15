@@ -486,25 +486,42 @@ const propertiesOrder = propertyGroups.map((properties) => ({
 
 module.exports = {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-clean-order'],
-  rules: {
-    'selector-class-pattern': null,
-    'scss/dollar-variable-pattern': null,
-    'scss/double-slash-comment-whitespace-inside': null,
-    'scss/no-global-function-names': null,
-    'property-no-vendor-prefix': null,
-    'scss/dollar-variable-empty-line-before': null, // scss vars after $name will be not grouped
-    'scss/double-slash-comment-empty-line-before': null,
-    'color-function-notation': 'legacy', // not use new rgb color notation rgb(25 26 30 / 90%)
-    'alpha-value-notation': 'number', // 0.5 instead of 90%
+  plugins: ['stylelint-declaration-block-no-ignored-properties'],
 
-    'function-name-case': null,
-    'keyframes-name-pattern': null,
+  rules: {
+    'color-function-notation': 'legacy', // not use new rgb color notation e.g. "rgb(25 26 30 / 50%)"
+    'alpha-value-notation': 'number', // 0.5 instead of 50%
+
+    'keyframes-name-pattern': null, // allow camelcase in keyframes names, e.g. "@keyframes fadeInBonus"
+    'function-name-case': null, //! allow camelcase function names e.g. "slideWidth"
+    'selector-class-pattern': null, // allow double dash in the middle of the class names e.g. ".Modal--default"
+    'custom-property-pattern': null, // allow double dash in the middle of the var names e.g. "--item--max-width"
+
+    'property-no-vendor-prefix': null, // allow vendor prefixes e.g. "-webkit-box-shadow"
+    'selector-no-vendor-prefix': null, // allow "&::-webkit-input-placeholder" or "&:hover::-webkit-input-placeholder"
+
+    //-- plugin rules --
+    'plugin/declaration-block-no-ignored-properties': true, // e.g. catch "vertical-align" after "display: block"
+    //-- end of plugin rules --
+
+    //-- scss rules --
+    'scss/at-function-pattern': null, // allow camelcase function names
+    'scss/dollar-variable-pattern': null, // allow camelCase "$playersChatClass" and kebab-case with double dash "$option-color" "$option-bg--selected"
+    'scss/no-global-function-names': null, // allow global function names e.g. map-get($setting, 'bg')
+    'scss/at-extend-no-missing-placeholder': null, // allow duplicate code from other classes e.g. "@extend .Button--button-special"
+    'scss/dollar-variable-empty-line-before': null, // scss vars after $name will be not grouped
+    'scss/double-slash-comment-whitespace-inside': null, //--example--// without space at the start of the comment
+    'scss/double-slash-comment-empty-line-before': null, // no need empty line before every comment
+
+    'scss/operator-no-newline-before': true, //
+    'scss/operator-no-newline-after': null, // some calc() formulas are very long and this two rules can conflict with each other
+    //-- end of scss rules --
 
     'length-zero-no-unit': [
       true,
       {
         ignore: ['custom-properties'],
-        ignoreFunctions: ['columnWidth'],
+        ignoreFunctions: ['columnWidth'], // if pass 0 instead of "0px" to columnWidth function, it will break
       },
     ],
 
@@ -520,6 +537,7 @@ module.exports = {
       {
         severity: 'warning',
         unspecified: 'bottomAlphabetical',
+        emptyLineBeforeUnspecified: 'always',
         emptyLineMinimumPropertyThreshold: 7,
       },
     ],
@@ -538,5 +556,5 @@ module.exports = {
       { severity: 'warning' },
     ],
   },
-  ignoreFiles: ['**/normalize.css'],
+  ignoreFiles: ['**/normalize.css', '/temp/**'],
 };
