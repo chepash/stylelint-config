@@ -1,4 +1,4 @@
-//-- stylelint-config-clean-order reconfig --
+//-- stylelint-config-clean-order re-config --
 const positioning = [
   'isolation',
   'position',
@@ -487,7 +487,7 @@ const propertiesOrder = propertyGroups.map((properties) => ({
   properties,
 }));
 
-//-- end of stylelint-config-clean-order reconfig --
+//-- end of stylelint-config-clean-order re-config --
 
 module.exports = {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-clean-order'],
