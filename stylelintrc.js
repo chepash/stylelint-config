@@ -505,6 +505,8 @@ module.exports = {
     'property-no-vendor-prefix': null, // allow vendor prefixes e.g. "-webkit-box-shadow"
     'selector-no-vendor-prefix': null, // allow "&::-webkit-input-placeholder" or "&:hover::-webkit-input-placeholder"
 
+    'media-feature-range-notation': 'prefix', // allow only "@media (min-width: 600px)" instead of "@media (width >= 600px)"
+
     //-- plugin rules --
     'plugin/declaration-block-no-ignored-properties': true, // e.g. catch "vertical-align" after "display: block"
     //-- end of plugin rules --
